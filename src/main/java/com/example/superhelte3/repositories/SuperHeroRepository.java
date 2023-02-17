@@ -26,6 +26,7 @@ public class SuperHeroRepository {
     public ArrayList<SuperHero> getHeroDatabase() {
         return superheroDatabase;
     }
+
     public SuperHero getSuperHero(String superHeroName) {
         SuperHero tempHero = null;
         for (SuperHero s : superheroDatabase) {
@@ -34,9 +35,31 @@ public class SuperHeroRepository {
         }
         return tempHero;
     }
+
+    public void deleteSuperHero(String superHeroName) {
+        for (SuperHero s : superheroDatabase) {
+            if (s.getSuperheroName().equals(superHeroName)) {
+                superheroDatabase.remove(s);
+            }
+        }
+    }
+
+    public void createSuperHero(SuperHero s) {
+        superheroDatabase.add(s);
+    }
+
+    public void editSuperHero(SuperHero newHero) {
+        for (SuperHero s : superheroDatabase) {
+            if (s.getSuperheroName().equals(newHero.getSuperheroName())) {
+                superheroDatabase.remove(s);
+                superheroDatabase.add(newHero);
+            }
+        }
+    }
 }
 /*
     //Samler en gruppe af helte, når man skal gemme resultater. Bruges til når der skal redigeres.
+
     public ArrayList<SuperHero> searchForHeroList(String searchName) {
         SuperHero hero;
         findSuperheroList.clear(); //Clear for at når man søger flere gange så gemmes de gamle svar ikke
@@ -52,16 +75,7 @@ public class SuperHeroRepository {
         }
         return findSuperheroList;
     }
+*/
 
-    public void deleteHero(int heroToDelete) {
 
-        //Fjerner 1 fra bruger input for at matche arraylist index
-        int deleteOnIndex = heroToDelete - 1;
 
-        //Printer ud før der slettes så man stadig kan hente den slettede helts navn.
-        System.out.println(superheroDatabase.get(deleteOnIndex).getName() + " has been deleted");
-
-        superheroDatabase.remove(deleteOnIndex);
-    }
-
- */

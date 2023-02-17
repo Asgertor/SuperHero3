@@ -16,4 +16,14 @@ public class SuperHeroServices {
     public SuperHero getSuperHero(String superHeroName){
         return shRepository.getSuperHero(superHeroName);
     }
+    public void deleteSuperHero(String superHeroName){
+        shRepository.deleteSuperHero(superHeroName);
+    }
+
+    public void createSuperHero(SuperHero s) {
+        shRepository.createSuperHero(s);
+    }
+    public void editSuperHero(SuperHero s) {
+        shRepository.editSuperHero(s);
+    }
 }
