@@ -14,36 +14,35 @@ import java.util.List;
 
 @Controller
 public class SuperHeroController {
-    SuperHeroServices shServices = new SuperHeroServices();
-
+    SuperHeroServices superHeroServices = new SuperHeroServices();
 
     @GetMapping(path = "/")
     public ResponseEntity<List<SuperHero>> showAllHeroes() {
-        ArrayList<SuperHero> heroList = shServices.getHeroDatabase();
+        ArrayList<SuperHero> heroList = superHeroServices.getHeroDatabase();
         return new ResponseEntity<>(heroList, HttpStatus.OK);
     }
 
     @GetMapping(path="{superHeroName}")
     public ResponseEntity<SuperHero> showSpecificHero(@PathVariable String superHeroName) {
-        SuperHero s = shServices.getSuperHero(superHeroName);
+        SuperHero s = superHeroServices.getSuperHero(superHeroName);
         return new ResponseEntity<>(s, HttpStatus.OK);
     }
 
     @GetMapping("delete")
     public ResponseEntity<Void> deleteSuperHero(@RequestParam String superHeroName) {
-        shServices.deleteSuperHero(superHeroName);
+        superHeroServices.deleteSuperHero(superHeroName);
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
     @PostMapping(path="create")
     public ResponseEntity<SuperHero> createSuperHero(@RequestBody SuperHero s){
-        shServices.createSuperHero(s);
+        superHeroServices.createSuperHero(s);
         return new ResponseEntity<>(s, HttpStatus.OK);
     }
 
     @PutMapping(path="edit")
     public ResponseEntity<SuperHero> editSuperHero(@RequestBody SuperHero s){
-        shServices.editSuperHero(s);
+        superHeroServices.editSuperHero(s);
         return new ResponseEntity<>(s, HttpStatus.OK);
     }
 
